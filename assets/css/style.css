@@ -19,7 +19,7 @@ textarea {
   color: black;
   border-radius: 0;
   border-bottom: 10px solid black;
-  padding-bottom: 2rem;
+  /* padding-bottom: 2rem; */
 }
 
 .description {
@@ -72,8 +72,7 @@ textarea {
 }
 
 #currentDay {
-    padding-top: 7px;
-    margin-bottom: 0;
-    font-size: 1.35rem;
+  padding-top: 7px;
+  margin-bottom: 0;
+  font-size: 1.35rem;
 }
-
