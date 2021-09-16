@@ -9,7 +9,7 @@ textarea {
   border: none;
   resize: none;
   color: #000000;
-  border-left: 1px solid black;
+  border-left: 1px solid #6c757d;
   padding: 10px;
 }
 
@@ -75,4 +75,12 @@ textarea {
   padding-top: 7px;
   margin-bottom: 0;
   font-size: 1.35rem;
+}
+
+div.rounded-left {
+    color: white;
+    padding-right: 10px;
+    line-height: 70px;
+    text-align: right;
+    font-size: 120%;
 }
