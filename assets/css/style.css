@@ -64,12 +64,21 @@ textarea {
   border-bottom-right-radius: 15px;
   background-color: #06aed5;
   color: white;
+  line-height: 70px;
+  text-align: center;
+  font-size: 20px;
 }
 
-.saveBtn i:hover {
-  font-size: 20px;
-  transition: all 0.3s ease-in-out;
+.saveBtn:hover {
+  font-size: 24px;
+  transition: all 0.1s ease-in-out;
+  cursor: pointer;
 }
+
+.saveBtn:active {
+    font-size: 16px;
+    transition: all 0.01s ease-in-out;
+  }
 
 #currentDay {
   padding-top: 7px;

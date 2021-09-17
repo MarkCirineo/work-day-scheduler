@@ -1,6 +1,14 @@
 currentDay = $("#currentDay");
 currentDay.text(moment().format("dddd, MMMM Do, YYYY, HH:mm:ss"));
 
+var currentHour;
+currentHour = moment().format("H")
+
+console.log(currentHour);
+
+
+
+
 //textarea values for object
 nineItem = $("#nine");
 tenItem = $("#ten");
