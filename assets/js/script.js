@@ -6,20 +6,22 @@ currentHour = moment().format("H")
 
 console.log(currentHour);
 
-//TODO: add function that changes color of textarea depends on time (using preset class)
-//? change numbers for time to 24 hour clock so i can compare to HH
-
-
 // textarea values
-nineItem = $("#nine");
-tenItem = $("#ten");
-elevenItem = $("#eleven");
-twelveItem = $("#twelve");
-oneItem = $("#one");
-twoItem = $("#two");
-threeItem = $("#three");
-fourItem = $("#four");
-fiveItem = $("#five");
+nineItem = $("#9");
+tenItem = $("#10");
+elevenItem = $("#11");
+twelveItem = $("#12");
+oneItem = $("#13");
+twoItem = $("#14");
+threeItem = $("#15");
+fourItem = $("#16");
+fiveItem = $("#17");
+
+//TODO: add function that changes color of textarea depends on time (using preset class)
+
+console.log(nineItem.attr("id"))
+// console.log(nineItem.dataset.hour)
+
 
 // button for each element with saveBtn class
 $(".saveBtn").on("click", saveScheduleItems)
