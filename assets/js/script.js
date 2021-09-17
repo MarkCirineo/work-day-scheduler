@@ -1,8 +1,6 @@
 currentDay = $("#currentDay");
 currentDay.text(moment().format("dddd, MMMM Do, YYYY, HH:mm:ss"));
 
-
-
 //textarea values for object
 nineItem = $("#nine");
 tenItem = $("#ten");
@@ -13,25 +11,37 @@ twoItem = $("#two");
 threeItem = $("#three");
 fourItem = $("#four");
 fiveItem = $("#five");
-
 // saving items to local storage on button click
+var scheduleItems = {
+    nine: nineItem.val(),
+    ten: tenItem.val(),
+    eleven: elevenItem.val(),
+    twelve: twelveItem.val(),
+    one: oneItem.val(),
+    two: twoItem.val(),
+    three: threeItem.val(),
+    four: fourItem.val(),
+    five: fiveItem.val()
+};
+saveBtn = document.querySelectorAll(".saveBtn");
+console.log(saveBtn);
+
+saveBtn.forEach(function(save) {
+    save.addEventListener("click", saveScheduleItems)
+})
+
+// saveBtn.addEventListener("click", );
+
 function saveScheduleItems(event) {
     //object for local storage
-    var scheduleItems = {
-        nine: nineItem.val(),
-        ten: tenItem.val(),
-        eleven: elevenItem.val(),
-        twelve: twelveItem.val(),
-        one: oneItem.val(),
-        two: twoItem.val(),
-        three: threeItem.val(),
-        four: fourItem.val(),
-        five: fiveItem.val()
-    };
+    
     var saveButton = event.target;
+    // console.log(saveButton)
     // if (saveButton.matches(".save-nine") || nineItem.val() !== "") {
     //     scheduleItems.nine = nineItem.val()
+    //     console.log(saveButton)
     // } else if (saveButton.matches(".save-ten") || tenItem.val() !== "") {
+    //     console.log(saveButton)
     //     scheduleItems.ten = tenItem.val()
     // } else if (saveButton.matches(".save-eleven") || elevenItem.val() !== "") {
     //     scheduleItems.eleven = elevenItem.val()
@@ -48,35 +58,65 @@ function saveScheduleItems(event) {
     // } else if (saveButton.matches(".save-five") || fiveItem.val() !== "") {
     //     scheduleItems.five = fiveItem.val()
     // } 
+    // if (saveButton.matches(".save-nine")) {
+    //     scheduleItems.nine = nineItem.val()
+    //     console.log(saveButton)
+    // } else if (saveButton.matches(".save-ten")) {
+    //     console.log(saveButton)
+    //     scheduleItems.ten = tenItem.val()
+    // } else if (saveButton.matches(".save-eleven")) {
+    //     scheduleItems.eleven = elevenItem.val()
+    // } else if (saveButton.matches(".save-twelve")) {
+    //     scheduleItems.twelve = twelveItem.val()
+    // } else if (saveButton.matches(".save-one")) {
+    //     scheduleItems.one = oneItem.val()
+    // } else if (saveButton.matches(".save-two")) {
+    //     scheduleItems.two = twoItem.val()
+    // } else if (saveButton.matches(".save-three")) {
+    //     scheduleItems.three = threeItem.val()
+    // } else if (saveButton.matches(".save-four")) {
+    //     scheduleItems.four = fourItem.val()
+    // } else if (saveButton.matches(".save-five")) {
+    //     scheduleItems.five = fiveItem.val()
+    // } 
     // TODO: fix buttons saving items from other input fields
     switch (true) {
-        case (saveButton.matches(".save-nine")):
+        case (saveButton.matches(".save-nine") || nineItem.val() !== ""):
             scheduleItems.nine = nineItem.val();
-        case (saveButton.matches(".save-ten")):
+            
+        case (saveButton.matches(".save-ten") || tenItem.val() !== ""):
             scheduleItems.ten = tenItem.val();
-        case (saveButton.matches(".save-eleven")):
+            
+        case (saveButton.matches(".save-eleven") || elevenItem.val() !== ""):
             scheduleItems.eleven = elevenItem.val();
-        case (saveButton.matches(".save-twelve")):
+            
+        case (saveButton.matches(".save-twelve") || twelveItem.val() !== ""):
             scheduleItems.twelve = twelveItem.val();
-        case (saveButton.matches(".save-one")):
+            
+        case (saveButton.matches(".save-one") || oneItem.val() !== ""):
             scheduleItems.one = oneItem.val();
-        case (saveButton.matches(".save-two")):
+            
+        case (saveButton.matches(".save-two") || twoItem.val() !== ""):
             scheduleItems.two = twoItem.val();
-        case (saveButton.matches(".save-three")):
+            
+        case (saveButton.matches(".save-three") || threeItem.val() !== ""):
             scheduleItems.three = threeItem.val();
-        case (saveButton.matches(".save-four")):
+            
+        case (saveButton.matches(".save-four") || fourItem.val() !== ""):
             scheduleItems.four = fourItem.val();
-        case (saveButton.matches(".save-five")):
+            
+        case (saveButton.matches(".save-five") || fiveItem.val() !== ""):
             scheduleItems.five = fiveItem.val();        
+            
         default:
             break;
     }
 
     localStorage.setItem("schedule items", JSON.stringify(scheduleItems));
-}
+};
 //button click for above
-container = $(".container")
-container.on("click", saveScheduleItems)
+// container = $(".container")
+
 
 function renderScheduleItems() {
     var savedSheduleItems = JSON.parse(localStorage.getItem("schedule items"))
