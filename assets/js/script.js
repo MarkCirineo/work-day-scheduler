@@ -1,10 +1,6 @@
 currentDay = $("#currentDay");
 currentDay.text(moment().format("dddd, MMMM Do, YYYY, HH:mm:ss"));
-
-var currentHour;
-currentHour = moment().format("H")
-
-console.log(currentHour);
+var currentHour = moment().format("H")
 
 // textarea values
 nineItem = $("#09");
@@ -58,7 +54,7 @@ function renderScheduleItems() {
     fiveItem.val(localStorage.getItem(05));
 }
 
-//initial function that runs on page load
+//* initial function that runs on page load
 // changes color of background of textareas
 // displays time at the top
 // and calls function to display items on screen
@@ -67,14 +63,22 @@ function init() {
         if ($(this).attr("id") === currentHour) {
             $(this).addClass("present").removeClass("past future")
         } else if ($(this).attr("id") > currentHour) {
-            $(this).addClass("past").removeClass("present future")
+            $(this).addClass("future").removeClass("present past")
         } else {
-            $(this).addClass("future").removeClass("past present")
+            $(this).addClass("past").removeClass("future present")
         }
-    });
-
+    }); 
     setInterval(() => {
         currentDay.text(moment().format("dddd, MMMM Do, YYYY, HH:mm:ss"));
+        textArea.each(function () {
+            if ($(this).attr("id") === currentHour) {
+                $(this).addClass("present").removeClass("past future")
+            } else if ($(this).attr("id") > currentHour) {
+                $(this).addClass("future").removeClass("present past")
+            } else {
+                $(this).addClass("past").removeClass("future present")
+            }
+        }); 
     }, 1000);
     renderScheduleItems();
 }
