@@ -20,17 +20,7 @@ threeItem = $("#three");
 fourItem = $("#four");
 fiveItem = $("#five");
 // saving items to local storage on button click
-var scheduleItems = {
-    nine: nineItem.val(),
-    ten: tenItem.val(),
-    eleven: elevenItem.val(),
-    twelve: twelveItem.val(),
-    one: oneItem.val(),
-    two: twoItem.val(),
-    three: threeItem.val(),
-    four: fourItem.val(),
-    five: fiveItem.val()
-};
+
 saveBtn = document.querySelectorAll(".saveBtn");
 console.log(saveBtn);
 
@@ -38,12 +28,29 @@ saveBtn.forEach(function(save) {
     save.addEventListener("click", saveScheduleItems)
 })
 
-// saveBtn.addEventListener("click", );
-
 function saveScheduleItems(event) {
-    //object for local storage
+    var element = event.target;
     
-    var saveButton = event.target;
+    if (element.matches(".save-nine")) {
+        localStorage.setItem(09, nineItem.val())
+    } else if (element.matches(".save-ten")) {
+        localStorage.setItem(10, tenItem.val())
+    } else if (element.matches(".save-eleven")) {
+        localStorage.setItem(11, elevenItem.val())
+    } else if (element.matches(".save-twelve")) {
+        localStorage.setItem(12, twelveItem.val())
+    } else if (element.matches(".save-one")) {
+        localStorage.setItem(01, oneItem.val())
+    } else if (element.matches(".save-two")) {
+        localStorage.setItem(02, twoItem.val())
+    } else if (element.matches(".save-three")) {
+        localStorage.setItem(03, threeItem.val())
+    } else if (element.matches(".save-four")) {
+        localStorage.setItem(03, fourItem.val())
+    } else if (element.matches(".save-five")) {
+        localStorage.setItem(05, fiveItem.val())
+    }
+
     // console.log(saveButton)
     // if (saveButton.matches(".save-nine") || nineItem.val() !== "") {
     //     scheduleItems.nine = nineItem.val()
@@ -87,45 +94,36 @@ function saveScheduleItems(event) {
     // } else if (saveButton.matches(".save-five")) {
     //     scheduleItems.five = fiveItem.val()
     // } 
-    // TODO: fix buttons saving items from other input fields
-    switch (true) {
-        case (saveButton.matches(".save-nine") || nineItem.val() !== ""):
-            scheduleItems.nine = nineItem.val();
-            
-        case (saveButton.matches(".save-ten") || tenItem.val() !== ""):
-            scheduleItems.ten = tenItem.val();
-            
-        case (saveButton.matches(".save-eleven") || elevenItem.val() !== ""):
-            scheduleItems.eleven = elevenItem.val();
-            
-        case (saveButton.matches(".save-twelve") || twelveItem.val() !== ""):
-            scheduleItems.twelve = twelveItem.val();
-            
-        case (saveButton.matches(".save-one") || oneItem.val() !== ""):
-            scheduleItems.one = oneItem.val();
-            
-        case (saveButton.matches(".save-two") || twoItem.val() !== ""):
-            scheduleItems.two = twoItem.val();
-            
-        case (saveButton.matches(".save-three") || threeItem.val() !== ""):
-            scheduleItems.three = threeItem.val();
-            
-        case (saveButton.matches(".save-four") || fourItem.val() !== ""):
-            scheduleItems.four = fourItem.val();
-            
-        case (saveButton.matches(".save-five") || fiveItem.val() !== ""):
-            scheduleItems.five = fiveItem.val();        
-            
-        default:
-            break;
-    }
 
-    localStorage.setItem("schedule items", JSON.stringify(scheduleItems));
-};
+    // switch (true) {
+    //     case (saveButton.matches(".save-nine") || nineItem.val() !== ""):
+    //         scheduleItems.nine = nineItem.val();
+    //     case (saveButton.matches(".save-ten") || tenItem.val() !== ""):
+    //         scheduleItems.ten = tenItem.val();
+    //     case (saveButton.matches(".save-eleven") || elevenItem.val() !== ""):
+    //         scheduleItems.eleven = elevenItem.val();
+    //     case (saveButton.matches(".save-twelve") || twelveItem.val() !== ""):
+    //         scheduleItems.twelve = twelveItem.val();
+    //     case (saveButton.matches(".save-one") || oneItem.val() !== ""):
+    //         scheduleItems.one = oneItem.val();
+    //     case (saveButton.matches(".save-two") || twoItem.val() !== ""):
+    //         scheduleItems.two = twoItem.val();
+    //     case (saveButton.matches(".save-three") || threeItem.val() !== ""):
+    //         scheduleItems.three = threeItem.val();
+    //     case (saveButton.matches(".save-four") || fourItem.val() !== ""):
+    //         scheduleItems.four = fourItem.val();
+    //     case (saveButton.matches(".save-five") || fiveItem.val() !== ""):
+    //         scheduleItems.five = fiveItem.val();           
+    //     default:
+    //         break;
+    // }
+
+    // localStorage.setItem("schedule items", JSON.stringify(scheduleItems));
+}
 //button click for above
 // container = $(".container")
 
-
+// TODO: fix items not displaying when refreshing
 function renderScheduleItems() {
     var savedSheduleItems = JSON.parse(localStorage.getItem("schedule items"))
     // console.log(savedSheduleItems)
