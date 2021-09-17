@@ -6,7 +6,8 @@ currentHour = moment().format("H")
 
 console.log(currentHour);
 
-
+//TODO: add function that changes color of textarea depends on time (using preset class)
+//? change numbers for time to 24 hour clock so i can compare to HH
 
 
 // textarea values
@@ -20,13 +21,8 @@ threeItem = $("#three");
 fourItem = $("#four");
 fiveItem = $("#five");
 
-// selects all elements with class .saveBtn
-saveBtn = document.querySelectorAll(".saveBtn");
-// loops through all elements and adds an event listener to run the function
-saveBtn.forEach(function(save) {
-    save.addEventListener("click", saveScheduleItems)
-})
-
+// button for each element with saveBtn class
+$(".saveBtn").on("click", saveScheduleItems)
 //saves items to local storage when save button is clicked
 function saveScheduleItems(event) {
     var element = event.target;
