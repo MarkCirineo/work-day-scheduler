@@ -7,7 +7,7 @@ currentHour = moment().format("H")
 console.log(currentHour);
 
 // textarea values
-nineItem = $("#9");
+nineItem = $("#09");
 tenItem = $("#10");
 elevenItem = $("#11");
 twelveItem = $("#12");
@@ -16,12 +16,7 @@ twoItem = $("#14");
 threeItem = $("#15");
 fourItem = $("#16");
 fiveItem = $("#17");
-
-//TODO: add function that changes color of textarea depends on time (using preset class)
-
-console.log(nineItem.attr("id"))
-// console.log(nineItem.dataset.hour)
-
+textArea = $("textarea")
 
 // button for each element with saveBtn class
 $(".saveBtn").on("click", saveScheduleItems)
@@ -44,7 +39,7 @@ function saveScheduleItems(event) {
     } else if (element.matches(".save-three")) {
         localStorage.setItem(03, threeItem.val())
     } else if (element.matches(".save-four")) {
-        localStorage.setItem(03, fourItem.val())
+        localStorage.setItem(04, fourItem.val())
     } else if (element.matches(".save-five")) {
         localStorage.setItem(05, fiveItem.val())
     }
@@ -64,9 +59,20 @@ function renderScheduleItems() {
 }
 
 //initial function that runs on page load
+// changes color of background of textareas
 // displays time at the top
 // and calls function to display items on screen
 function init() {
+    textArea.each(function () {
+        if ($(this).attr("id") === currentHour) {
+            $(this).addClass("present").removeClass("past future")
+        } else if ($(this).attr("id") > currentHour) {
+            $(this).addClass("past").removeClass("present future")
+        } else {
+            $(this).addClass("future").removeClass("past present")
+        }
+    });
+
     setInterval(() => {
         currentDay.text(moment().format("dddd, MMMM Do, YYYY, HH:mm:ss"));
     }, 1000);
