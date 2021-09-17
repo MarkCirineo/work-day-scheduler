@@ -1,7 +1,3 @@
-currentDay = $("#currentDay");
-currentDay.text(moment().format("dddd, MMMM Do, YYYY, HH:mm:ss"));
-var currentHour = moment().format("H")
-
 // textarea values
 nineItem = $("#09");
 tenItem = $("#10");
@@ -59,8 +55,14 @@ function renderScheduleItems() {
 // displays time at the top
 // and calls function to display items on screen
 function init() {
+    // sets time up top
+    currentDay = $("#currentDay");
+    currentDay.text(moment().format("dddd, MMMM Do, YYYY, HH:mm:ss"));
+    // defines variable for conditional
+    var currentHour = moment().format("HH")
+    // sets textarea color on page load
     textArea.each(function () {
-        if ($(this).attr("id") === currentHour) {
+        if ($(this).attr("id") == currentHour) {
             $(this).addClass("present").removeClass("past future")
         } else if ($(this).attr("id") > currentHour) {
             $(this).addClass("future").removeClass("present past")
@@ -68,10 +70,15 @@ function init() {
             $(this).addClass("past").removeClass("future present")
         }
     }); 
+    // interval for time at the top and for changing textarea colors
     setInterval(() => {
+        // redefines variable every second
+        currentHour = moment().format("HH")
+        // prints time at the top every second
         currentDay.text(moment().format("dddd, MMMM Do, YYYY, HH:mm:ss"));
+        // changes textarea color every second
         textArea.each(function () {
-            if ($(this).attr("id") === currentHour) {
+            if ($(this).attr("id") == currentHour) {
                 $(this).addClass("present").removeClass("past future")
             } else if ($(this).attr("id") > currentHour) {
                 $(this).addClass("future").removeClass("present past")
