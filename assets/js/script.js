@@ -1,14 +1,14 @@
 // textarea values
-nineItem = $("#09");
-tenItem = $("#10");
-elevenItem = $("#11");
-twelveItem = $("#12");
-oneItem = $("#13");
-twoItem = $("#14");
-threeItem = $("#15");
-fourItem = $("#16");
-fiveItem = $("#17");
-textArea = $("textarea")
+var nineItem = $("#09");
+var tenItem = $("#10");
+var elevenItem = $("#11");
+var twelveItem = $("#12");
+var oneItem = $("#13");
+var twoItem = $("#14");
+var threeItem = $("#15");
+var fourItem = $("#16");
+var fiveItem = $("#17");
+var textArea = $("textarea")
 
 // button for each element with saveBtn class
 $(".saveBtn").on("click", saveScheduleItems)
@@ -56,7 +56,7 @@ function renderScheduleItems() {
 // and calls function to display items on screen
 function init() {
     // sets time up top
-    currentDay = $("#currentDay");
+    var currentDay = $("#currentDay");
     currentDay.text(moment().format("dddd, MMMM Do, YYYY, HH:mm:ss"));
     // defines variable for conditional
     var currentHour = moment().format("HH")
